@@ -1,0 +1,29 @@
+/* Limpieza total de márgenes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100vh; /* Altura total del viewport */
+  overflow: hidden; /* Evita scrolls innecesarios */
+}
+
+body {
+  /* Fondo degradado suave gris-azulado */
+  background: radial-gradient(circle, #fdfdfd 0%, #aebbc7 100%);
+  
+  /* El secreto del centrado absoluto */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
