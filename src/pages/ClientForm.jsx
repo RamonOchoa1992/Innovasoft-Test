@@ -59,7 +59,6 @@ const ClientForm = () => {
     },
   });
 
-  // Lógica de previsualización adaptada para persistir tras F5 y usar "imagen"
   useEffect(() => {
     const imagen = formik.values.imagen;
 
@@ -68,14 +67,12 @@ const ClientForm = () => {
       return;
     }
 
-    // Si es un archivo nuevo (File), crear URL temporal
     if (imagen instanceof File || imagen instanceof Blob) {
       const objectUrl = URL.createObjectURL(imagen);
       setPreview(objectUrl);
       return () => URL.revokeObjectURL(objectUrl);
     }
 
-    // Si es un string (URL que viene del servidor), usarla directamente
     if (typeof imagen === 'string') {
       setPreview(imagen);
     }
@@ -262,6 +259,7 @@ const ClientForm = () => {
                   <TextField
                     fullWidth
                     size='small'
+                    required // 👈 AQUI SE AGREGA EL ASTERISCO
                     select={f.select}
                     type={f.type || 'text'}
                     label={f.label}
@@ -299,6 +297,7 @@ const ClientForm = () => {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  required // 👈 AQUI SE AGREGA EL ASTERISCO
                   multiline
                   rows={2}
                   label='Dirección'
@@ -316,6 +315,7 @@ const ClientForm = () => {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  required // 👈 AQUI SE AGREGA EL ASTERISCO
                   multiline
                   rows={3}
                   label='Reseña'

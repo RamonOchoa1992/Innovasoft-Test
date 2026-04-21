@@ -13,6 +13,7 @@ import {
   IconButton,
   useMediaQuery,
   useTheme,
+  Tooltip,
 } from '@mui/material';
 import {
   ExitToApp,
@@ -188,23 +189,24 @@ const MainLayout = ({ children }) => {
               {user?.username || 'Usuario'}
             </Typography>
 
-            <IconButton
-              onClick={handleLogout}
-              sx={{
-                backgroundColor: '#e0e0e0',
-                color: '#001529',
-                p: 0.8,
-                boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                '&:hover': {
-                  backgroundColor: '#ffffff',
-                  transform: 'scale(1.08)',
-                  boxShadow: '0px 4px 12px rgba(0,0,0,0.5)',
-                },
-              }}
-            >
-              <ExitToApp sx={{ fontSize: '1.2rem' }} />
-            </IconButton>
+            <Tooltip title='Cerrar sesión'>
+              <IconButton
+                onClick={handleLogout}
+                sx={{
+                  backgroundColor: '#e0e0e0',
+                  color: '#001529',
+                  p: 0.8,
+                  boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                  '&:hover': {
+                    backgroundColor: '#ffffff',
+                    boxShadow: '0px 4px 12px rgba(0,0,0,0.5)',
+                  },
+                }}
+              >
+                <ExitToApp sx={{ fontSize: '1.2rem' }} />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>
