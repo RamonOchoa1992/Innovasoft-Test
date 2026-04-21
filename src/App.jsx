@@ -6,6 +6,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Login from './pages/Login';
+import Register from './pages/Register'; // 👈 Asegúrate de que la ruta del archivo sea correcta
 import Home from './pages/Home';
 import Clients from './pages/Clients';
 import ClientForm from './pages/ClientForm';
@@ -39,6 +40,15 @@ function App() {
             element={
               <PublicRoute>
                 <Login />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path='/register'
+            element={
+              <PublicRoute>
+                <Register />
               </PublicRoute>
             }
           />
@@ -81,15 +91,8 @@ function App() {
             }
           />
 
-          {/* 404 Not Found */}
-          <Route
-            path='*'
-            element={
-              <PrivateRoute>
-                <NotFound />
-              </PrivateRoute>
-            }
-          />
+          {/* 404 Not Found - Removido de PrivateRoute para que sea visible siempre */}
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
     </AuthProvider>
