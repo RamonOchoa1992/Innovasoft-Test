@@ -1,16 +1,27 @@
-# React + Vite
+# Innovasoft Test - Client Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de gestión de clientes desarrollada con **React**. A continuación, se detallan las decisiones técnicas clave tomadas durante el desarrollo.
 
-Currently, two official plugins are available:
+## 🚀 Decisiones Técnicas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Vite vs Create React App (CRA)
+Se ha seleccionado **Vite** como herramienta de construcción (build tool) en lugar de *Create React App* por las siguientes razones:
+* **Velocidad de desarrollo:** Vite utiliza ESM nativo, lo que permite un inicio del servidor de desarrollo casi instantáneo y un HMR (Hot Module Replacement) mucho más rápido que Webpack.
+* **Modernización:** CRA está oficialmente en desuso (deprecated) por la comunidad de React. Vite ofrece una configuración más limpia y un rendimiento superior tanto en desarrollo como en producción.
 
-## React Compiler
+### 2. Uso de JavaScript (JSX) sobre TypeScript (TSX)
+Aunque TypeScript es el estándar de la industria para proyectos a gran escala, para este desarrollo se optó por **JavaScript puro (.jsx)** con el fin de:
+* **Simplicidad:** Mantener el código lo más ligero y directo posible.
+* **Compatibilidad con React 17:** Dado que el requerimiento se basa en React 17, se priorizó evitar capas de abstracción complejas en el tipado que pudieran ralentizar la implementación inicial, enfocándose en la lógica de negocio y la arquitectura limpia.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. Stack Tecnológico
+* **React 17:** Biblioteca principal para la interfaz.
+* **Material UI (MUI):** Para un diseño de componentes consistente y profesional.
+* **Formik & Yup:** Manejo de formularios y validaciones de esquema.
+* **React Router Dom:** Gestión de la navegación SPA.
 
-## Expanding the ESLint configuration
+## 🛠️ Instalación y Ejecución
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Instalar dependencias:
+   ```bash
+   npm install
