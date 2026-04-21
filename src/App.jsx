@@ -6,7 +6,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Login from './pages/Login';
-import Register from './pages/Register'; // 👈 Asegúrate de que la ruta del archivo sea correcta
+import Register from './pages/Register';
 import Home from './pages/Home';
 import Clients from './pages/Clients';
 import ClientForm from './pages/ClientForm';
@@ -24,6 +24,18 @@ const PrivateRoute = ({ children }) => {
 const PublicRoute = ({ children }) => {
   const { user } = useAuth();
   return !user ? children : <Navigate to='/home' />;
+};
+
+// 🗺️ WRAPPER PARA 404: Mantiene el layout si el usuario está autenticado
+const NotFoundWrapper = () => {
+  const { user } = useAuth();
+  return user ? (
+    <MainLayout>
+      <NotFound />
+    </MainLayout>
+  ) : (
+    <NotFound />
+  );
 };
 
 function App() {
@@ -72,7 +84,6 @@ function App() {
             }
           />
 
-          {/* Rutas de Clientes: Usamos el mismo componente para Crear y Editar */}
           <Route
             path='/clients/new'
             element={
@@ -91,8 +102,8 @@ function App() {
             }
           />
 
-          {/* 404 Not Found - Removido de PrivateRoute para que sea visible siempre */}
-          <Route path='*' element={<NotFound />} />
+          {/* 404 Not Found - Corregido para que use el layout si hay sesión */}
+          <Route path='*' element={<NotFoundWrapper />} />
         </Routes>
       </Router>
     </AuthProvider>
